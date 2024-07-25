@@ -1,90 +1,101 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
     <title>Alexis Feeney - Portfolio</title>
-    <style>
-        .container {
-            max-width: 960px;
-            margin: 0 auto;
-            padding: 40px;
-        }
-
-        .project {
-            margin-bottom: 20px;
-            border: 1px solid #ccc;
-            padding: 20px;
-        }
-    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js"></script>
 </head>
-
 <body>
     <header>
-        <nav>
+        <div class="user">
+            <svg fill="#ffffff" width="243px" height="243px" viewBox="-148.48 -148.48 808.96 808.96" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" transform="matrix(1, 0, 0, 1, 0, 0)">
+                <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)">
+                    <rect x="-148.48" y="-148.48" width="808.96" height="808.96" rx="404.48" fill="#000000" strokewidth="0"></rect>
+                </g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.024"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path d="M290.59 192c-20.18 0-106.82 1.98-162.59 85.95V192c0-52.94-43.06-96-96-96-17.67 0-32 14.33-32 32s14.33 32 32 32c17.64 0 32 14.36 32 32v256c0 35.3 28.7 64 64 64h176c8.84 0 16-7.16 16-16v-16c0-17.67-14.33-32-32-32h-32l128-96v144c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V289.86c-10.29 2.67-20.89 4.54-32 4.54-61.81 0-113.52-44.05-125.41-102.4zM448 96h-64l-64-64v134.4c0 53.02 42.98 96 96 96s96-42.98 96-96V32l-64 64zm-72 80c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16zm80 0c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16z"></path>
+                </g>
+            </svg>
+            <h3 class="name">Alexis Feeney</h3>
+            <p class="post">Software Engineer</p>
+        </div>
+        <nav class="navbar">
             <ul>
-                <li><a href="#about">About Me</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#">Download Resume <i class="fas fa-download"></i></a></li>
+                <li><a href="https://www.linkedin.com/in/afeeney9" target="_blank">LinkedIn <i class="fa-brands fa-linkedin"></i></a></li>
             </ul>
         </nav>
     </header>
-    <section id="about">
+    <div id="menu" class="fas fa-bars"></div>
+    <section id="home" class="home">
         <div class="container">
-            <img src="image/profile.png" alt="Profile Picture">
-            <h1>Alexis Feeney</h1>
-            <p style="font-family: 'Courier New', Courier, monospace; color: brown">Software Engineering Major</p>
-            <p>I am currently a sophomore pursuing a Bachelor of Science
-                in Software Engineering with a minor in Cybersecurity.
-                My passion for learning has guided me to the digital
-                world as I see it as intertwined with everyday life.
-                Exploring how to create and protect applications online
-                has led me to the Software engineering field and I am
-                looking forward to collaborating and learning from others
-                with a shared passion.
-            </p>
+            <h3>Hello World</h3>
+            <h1>I'M <span>Alexis Feeney</span></h1>
+            <p>I am currently a Junior pursuing a Bachelor of Science in Software Engineering with a minor in Cybersecurity. My passion for learning has guided me to the digital world as I see it as intertwined with everyday life. Exploring how to create and protect applications online has led me to the Software engineering field and I am looking forward to collaborating and learning from others with a shared passion.</p>
+            <a href="#about"><button class="btn">about me <i class="fas fa-user"></i></button></a>
         </div>
     </section>
-    <section id="projects">
-        <div class="container">
-            <h2>Projects</h2>
-            <div class="project">
-                <h3>Project 1</h3>
-                <img style="border-radius: 0" src="image\project1.png" alt="Project 1">
-                <p>The first project is related to develop a single Web page using
-                    only two technologies: HTML and CSS. The project consists on
-                    creating a single web page with a menu at the top know as
-                    Navitation Bar. We have to include text describing ourself and
-                    text describing the project. Additionally, we need to include
-                    two images: one image is of ourself and second image is anything
-                    related to the project itself.</p>
-            </div>
-            <div class="project">
-                <h3>Project 2</h3>
-                <img style="border-radius: 0" src="image\Mininet.jpg" alt="Project 1">
-                <p>During the Spring 2023 semester I worked as an ungraduate research assitant. I researched and
-                    evaluated the benefits and challenges of Software Defined Networks and its possible implementation
-                    on Power Grids. Utilized Mininet, an open-source software, and deployed Python libraries to create
-                    virtual
-                    Software Defined Networks for testing purposes.Documented and organized research findings and
-                    progress
-                    updates, ensuring easy access for future reference and enabling efficient collaboration among team
-                    members.</p>
+    <section id="about" class="about">
+        <h1 class="heading"><span>about</span> me</h1>
+        <div class="row">
+            <div class="counter">
+                <div class="box">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>Software Engineering</span>
+                    <h3>Graduation 2026</h3>
+                    <p>I am currently a Junior at Iowa State University pursuing a Bachelor of Science in Software Engineering with a minor in Cybersecurity.</p>
+                </div>
+                <div class="box">
+                    <i class="fas fa-graduation-cap"></i>
+                    <span>GFACT Certification</span>
+                    <h3>Valid 2023-2027</h3>
+                    <p>The GIAC Foundational Cybersecurity Technologies (GFACT) certification validates a practitioner's knowledge of essential foundational cybersecurity concepts.</p>
+                </div>
+                <div class="box">
+                    <i class="fa fa-briefcase"></i>
+                    <span>Cybersecurity Intern</span>
+                    <h3>Verizon</h3>
+                    <p>I worked with Verizons Web App Penetration Tester Team on the Product Securtiy Team at Verizon to automate reconassiance testing</p>
+                </div>
+                <div class="box">
+                    <i class="fa fa-briefcase"></i>
+                    <span>Undergrad Research Assistant</span>
+                    <h3>Iowa State University</h3>
+                    <p>Researched and evaluated the benefits and challenges of Software Defined Networks and its possible implementation on Power Grids</p>
+                </div>
             </div>
         </div>
     </section>
-
-    <section id="contact">
-        <div class="container">
-            <h2>Contact Me</h2>
-            <p>You can reach me at afeeney9@iastate.edu</p>
+    <section class="portfolio" id="portfolio">
+        <h1 class="heading">my <span>portfolio</span></h1>
+        <div class="box-container">
+            <div class="box">
+                <img src="image/mininet-logo.jpg" alt="Mininet Logo">
+            </div>
+            <div class="box">
+                <img src="image/webDevBasic.jpg" alt="Web Development">
+            </div>
+            <div class="box">
+                <img src="image/webDevBasic.jpg" alt="Web Development">
+            </div>
+            <div class="box">
+                <img src="image/webDevBasic.jpg" alt="Web Development">
+            </div>
         </div>
     </section>
     <footer>
-        <p>&copy; 2023 Alexis Feeney</p>
+        <p>&copy; 2024 Alexis Feeney</p>
     </footer>
 </body>
-
 </html>
