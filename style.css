@@ -2,7 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
 
 :root{
-    --yellow:#9d60e2;
+    --magenta:#9d60e2;
 }
 
 * {
@@ -15,7 +15,7 @@
 }
 
 *::selection{
-    background-color: var(--yellow);
+    background-color: var(--magenta);
     color: #333;
 }
 
@@ -33,19 +33,40 @@ html::-webkit-scrollbar-track{
 }
 
 html::-webkit-scrollbar-thumb{
-    background: var(--yellow);
+    background: var(--magenta);
 }
 
 body{
     background-color: #111;
     overflow-x: hidden;
-    padding-left: 35rem;
+    padding:0;
+    margin: 0;
 }
 
 section{
     min-height: 100vh;
     padding: 1rem;
 }
+
+/* CSS in style.css */
+#intro {
+    text-decoration-color: #faf4f4; 
+    text-shadow: 2px 2px 4px  #9d60e2;
+    animation: shadowPulse 2s infinite;
+}
+
+@keyframes shadowPulse {
+    0% {
+        text-shadow: 2px 2px 4px #9d60e2;
+    }
+    50% {
+        text-shadow: 8px 8px 10px #9d60e2;
+    }
+    100% {
+        text-shadow: 2px 2px 4px #9d60e2;
+    }
+}
+
 
 .btn{
     padding: .7rem 3rem;
@@ -63,7 +84,7 @@ section{
 }
 
 .btn:hover{
-    background: var(--yellow);
+    background: var(--magenta);
 }
 
 .heading{
@@ -74,32 +95,29 @@ section{
     border-bottom: .1rem solid #fff4;
     color: #fff;
 }
-.heading span{
-    color: var(--yellow);
-}
 
 header{
     position: fixed;
+    padding: 0;
+    margin: 0;
     top: 0;
-    left: 0;
-    z-index: 1000;
-    height:100%;
-    width:35rem;
-    background: #1a1a1a;
+    right: 0;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column;
     text-align: center;
+    background-color: #333;
 }
 
-header .user svg{
-    height: 17rem;
-    width: 17rem;
+svg{
+    height: 8rem;
+    width: 8rem;
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 1rem;
-    border:.7rem solid var(--yellow)
+    border:.7rem solid var(--magenta)
 }
 
 header .user .name{
@@ -117,8 +135,14 @@ header .navbar{
 }
 
 header .navbar ul{
-    list-style: none;
+    list-style-type: none;
     padding: 1rem 3rem;
+}
+
+header .navbar ul li{
+   width: 18%;
+   padding: 10px;
+   float: right;
 }
 
 header .navbar ul li a{
@@ -129,24 +153,44 @@ header .navbar ul li a{
     color: #fff;
     font-size: 2rem;
     border-radius: 5rem;
+    z-index: 1;
 }
 
 header .navbar ul li a:hover{
-    background: var(--yellow);
+    background: var(--magenta);
 }
 
 #menu{
     position: fixed;
-    top:2rem; 
+    padding-top:1.5rem; 
     right:2rem;
     background: #333;
     color: #eee;
     cursor: pointer;
-    font-size: 2.5rem;
+    font-size: 3rem;
     padding:1rem 1.5rem;
     z-index: 1000;
     display: none;
 }
+
+#menu-return{
+    position: fixed;
+    top:1rem; 
+    left:2rem;
+    cursor: pointer;
+    z-index: 100;
+}
+
+
+#menu-icon{
+    position: fixed;
+    top:1rem; 
+    left:2rem;
+    border: var(--magenta) solid;
+    border-radius: 100%;
+    z-index: 100;
+}
+
 
 @media (max-width:1200px) {
     html{
@@ -156,45 +200,67 @@ header .navbar ul li a:hover{
     .home{
         padding:1rem 4rem;
     }
+    header .navbar ul li{
+        float: right;
+        width: 100%;
+     }
+     header{
+        width: 50%;
+        height: 100%;
+        border-radius: 10px;
+     }
 }
 
-@media (max-width:990px) {
-    header{
-        left:-120%;
-    }
-    #menu{
-        display: block;
-    }
-    header.toggle{
-        left: 0%
-    }
-    body{
-        padding: 0;
-    }
+header.toggle{
+     right: 0%
 }
+
 
 @media (max-width:768px) {
     html{
         font-size: 50%;
     }
-}
-
-@media (max-width:400px) {
-    header{
-        width: 100vw;
+    #menu, #menu-bar{
+        display: block;
+        width: 100%;
+        padding: 20px;
+        text-align: right;
+        top: 0;
+        right: 0;
+        padding-right: 30px;
+     }
+     header{
+        display: none;
+     }
+     header.toggle{
+        padding-top: 35%;
+        display: block;
+     }
+     .navbar ul #menu-icon{
+       margin-left: 62%;
+       height: 18rem;
+       width: 18rem;
+       margin-top: 15%;
+     }
+     .experience .row .box span{
+        font-size: 1.3rem;
     }
+    .experience .row .counter .box{
+        width: 75%;
+    }
+
+}
 
     .heading{
         margin: 0 3rem;
     }
 
-    .about .row .counter .box{
-        width: 100%;
+    .experience .row .counter .box{
+        width: 20%;
     }
     .portfolio .box-container{
-        width: 100%;
+        width: 20%;
     }
-}
 
 .home{
     display: flex;
@@ -214,7 +280,7 @@ header .navbar ul li a:hover{
 }
 
 .home span{
-    color: var(--yellow);
+    color: var(--magenta);
 }
 
 .home p{
@@ -223,16 +289,14 @@ header .navbar ul li a:hover{
     padding: 1rem 0;
 }
 
-.about .row{
+.experience .row{
     color: white;
-    display: flex;
     align-items: center;
     justify-content: center;
-    flex-wrap: wrap;
     padding: 1rem 0;
 }
 
-.about .row .counter{
+.experience .row .counter{
     flex: 1 1 48rem;
     padding: 2rem 1rem;
     display: flex;
@@ -240,59 +304,64 @@ header .navbar ul li a:hover{
     flex-wrap: wrap;
 } 
 
-.about .row .counter .box{
-    width: 27rem;
+.experience .row .counter .box{
+    width: 50%;
     background: #222;
     margin: 2rem;
 }
-
-.about .row .counter .box span{
-    font-size: 2.25rem;
-    color: var(--yellow);
+.experience .row .counter .box .left-side{
+    font-size: 3rem;
+    text-align: center;
+    color: var(--magenta);
 }
 
-.about .row .counter .box h3{
+
+.experience .row .counter .box span{
+    font-size: 3rem;
+    text-align: center;
+    color: var(--magenta);
+}
+
+.experience .row .counter .box h3{
     font-size: 2rem;
     color: #fff;
 }
 
-.about .row .box{
-    display: flex;
+.experience .row .box{
     background: #222;
     align-items: center;
-    justify-content: space-between;
-    flex-wrap: wrap;
     padding:1rem 0;
     padding-left: 3rem;
-    width: 27rem;
     margin: 4rem 1rem;
     padding-left: 4rem;
     border-left: .2rem solid #fff;
-    position: relative;
+    z-index: -1;
+    position:relative;
+    text-align: center;
 }
 
-.about .row .box span{
-    font-size: 1.3rem;
+.experience .row .box span{
+    font-size: 20rem;
     background: #222;
     color: #fff;
     font-weight: bold;
     border-radius: 5rem;
-    padding: .5rem .5rem;
 }
 
-.about .row .box h3{
-    font-size: 2rem;
+.experience .row .box h3{
+    font-size: 3rem;
     color: #fff;
     padding-top: 1.5rem;
 }
 
-.about .row .box p{
-    font-size: 1.4rem;
+.experience .row .box p{
+    font-size: 1.8rem;
     color: #eee;
     padding-right: 2rem;
+    text-align: left;
 }
 
-.about .row .box i{
+.experience .row .box i{
     position: absolute;
     top:-1.5rem;
     left:-2.5rem;
@@ -303,10 +372,11 @@ header .navbar ul li a:hover{
     text-align: center;
     font-size: 2rem;
     color: #fff;
-    background: var(--yellow);
+    background: var(--magenta);
 }
 
 .portfolio .box-container{
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -321,6 +391,28 @@ header .navbar ul li a:hover{
     margin: 2rem;
     overflow: hidden;
     cursor: pointer;
+}
+.portfolio .box-container .box-buffer{
+    height: 20rem;
+    width: 35rem;
+    border-radius: 1rem;
+    margin: 2rem;
+    overflow: hidden;
+    background-color:#333;
+    border: 1rem solid #333;
+    background-image: 
+    linear-gradient(175deg, rgb(0 0 0 / 0%) 95%, #8d50a1 95%),
+    linear-gradient( 85deg, rgb(0 0 0 / 0%) 95%, #8d50a1 95%),
+    linear-gradient(175deg, rgb(0 0 0 / 0%) 80%, #4a3551 80%),
+    linear-gradient( 85deg, rgb(0 0 0 / 0%) 80%, #4a3551 80%),
+    linear-gradient(175deg, rgb(0 0 0 / 0%) 60%, #471357 60%),
+    linear-gradient( 85deg, rgb(0 0 0 / 0%) 60%, #471357 60%),
+    linear-gradient(175deg, rgb(0 0 0 / 0%) 40%, #8d50a1 40%),
+    linear-gradient( 85deg, rgb(0 0 0 / 0%) 40%, #8d50a1 40%),
+    linear-gradient(175deg, rgb(0 0 0 / 0%) 20%, #4a3551 20%),
+    linear-gradient( 85deg, rgb(0 0 0 / 0%) 20%, #4a3551 20%),
+    linear-gradient(175deg, rgb(0 0 0 / 0%) 0%, #471357 0%),
+    linear-gradient( 85deg, rgb(0 0 0 / 0%) 0%, #471357 0%);
 }
 
 .portfolio .box-container .box img{
