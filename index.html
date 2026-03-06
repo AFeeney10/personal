@@ -1,135 +1,750 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
-    <title>Alexis Feeney - Portfolio</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="script.js"></script>
+  <meta charset="UTF-8" />
+  <title>Alexis Feeney | Cybersecurity Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
+
+  <style>
+    /* Reset */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: "Poppins", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #e9d8fd, #dbeafe);
+      color: #2c2c2c;
+      padding: 0;
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Navigation Bar */
+    nav {
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      padding: 0.6rem 2rem;
+      box-shadow: 0 0 12px #c084fcaa;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 3rem;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    nav .logo {
+      border: 3px solid #a78bfa;
+      border-radius: 50%;
+      padding: 4px;
+      background: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 54px;
+      height: 54px;
+      box-shadow: 0 0 12px #a78bfaaa;
+      transition: box-shadow 0.3s ease;
+    }
+
+    nav .logo:hover {
+      box-shadow: 0 0 25px #a78bfaee, 0 0 45px #a78bfaaa;
+    }
+
+    nav .logo img {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 0 1.5px #a78bfa);
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      margin-top: 20px;
+      gap: 3rem;
+      align-items: center;
+      justify-content: center;
+      flex-grow: 1;
+      max-width: 700px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.25rem 0;
+      position: relative;
+      transition: color 0.3s ease;
+      letter-spacing: 0.05em;
+      text-shadow: 0 0 6px #ffffffaa;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: #ffffff;
+      transition: width 0.3s ease, left 0.3s ease;
+      border-radius: 1px;
+    }
+
+    nav ul li a:hover,
+    nav ul li a:focus {
+      color: #ffffff;
+      text-shadow: 0 0 15px #ffffffcc;
+    }
+
+    nav ul li a:hover::after,
+    nav ul li a:focus::after {
+      width: 50%;
+      left: 25%;
+    }
+
+    /* Container */
+    main {
+      max-width: 900px;
+      margin: 3rem auto 2rem;
+      padding: 0 1rem;
+    }
+
+    /* Card style with tech vibe */
+    .card {
+      background: white;
+      padding: 2rem 3rem;
+      border-radius: 20px;
+      box-shadow:
+        0 0 8px #a78bfa55,
+        0 0 15px #8b5cf644,
+        0 12px 24px rgba(0, 0, 0, 0.1);
+      margin: 2rem 0;
+      position: relative;
+      color: #2c2c2c;
+    }
+
+    /* subtle tech grid behind card */
+    .card::before {
+      content: "";
+      position: absolute;
+      top: 12px; bottom: 12px; left: 12px; right: 12px;
+      background:
+        repeating-linear-gradient(0deg, #8b5cf622, #8b5cf622 1px, transparent 2px, transparent 4px),
+        repeating-linear-gradient(90deg, #8b5cf622, #8b5cf622 1px, transparent 2px, transparent 4px);
+      opacity: 0.08;
+      pointer-events: none;
+      border-radius: 16px;
+      z-index: 0;
+    }
+
+    .card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+      100% { transform: translateY(0); }
+    }
+
+    /* Intro section */
+    .intro small {
+      font-weight: 600;
+      color: #7c3aed;
+      display: block;
+      margin-bottom: 0.25rem;
+      font-size: 1.2rem;
+      animation: glowText 3s ease-in-out infinite alternate;
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .intro h1 {
+      font-size: 3.8rem;
+      font-weight: 900;
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: 1rem;
+      animation: bounceGlow 3s ease-in-out infinite;
+      line-height: 1.1;
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+
+    }
+
+    .intro p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #4b4b4b;
+      max-width: 100%;
+      margin-bottom: 1.8rem;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* Button */
+    .btn-experience {
+      background: #8b5cf6;
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      font-size: 1rem;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow:
+        0 0 12px #8b5cf6cc,
+        0 0 30px #a78bfacc;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      user-select: none;
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+    }
+
+    .btn-experience:hover {
+      background-color: #ec4899;
+      box-shadow:
+        0 0 20px #ec4899cc,
+        0 0 45px #a78bfacc;
+    }
+
+    /* Icon for button */
+    .btn-experience svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+      filter: drop-shadow(0 0 1.5px #a78bfa);
+    }
+
+    /* Animations */
+    @keyframes glowText {
+      0% { text-shadow: 0 0 6px #a78bfacc; }
+      100% { text-shadow: 0 0 18px #8b5cf6; }
+    }
+
+    @keyframes bounceGlow {
+      0%, 100% {
+        transform: translateY(0);
+        filter: drop-shadow(0 0 7px #a78bfa);
+      }
+      50% {
+        transform: translateY(-10px);
+        filter: drop-shadow(0 0 15px #8b5cf6);
+      }
+    }
+
+    /* Section headers */
+    h2 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-family: 'Share Tech Mono', monospace;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      text-shadow: 0 0 6px #a78bfaaa;
+    }
+
+    /* Lists */
+    ul {
+      list-style: inside disc;
+      margin-bottom: 1rem;
+      color: #555;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    /* Links */
+    a {
+      color: #8b5cf6;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    a:hover {
+      color: #a78bfa;
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      nav {
+        flex-wrap: wrap;
+        gap: 1rem;
+      }
+
+      nav ul {
+        max-width: 100%;
+        justify-content: center;
+        gap: 1.5rem;
+      }
+
+      .intro h1 {
+        font-size: 2.8rem;
+      }
+
+      .card {
+        padding: 1.5rem 2rem;
+      }
+    }
+
+
+
+.experience-card h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #8b5cf6;
+  margin-bottom: 0.2rem;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.dates {
+  font-size: 0.9rem;
+  color: #555;
+  display: block;
+  margin-bottom: 0.8rem;
+  font-family: 'Share Tech Mono', monospace;
+}
+
+.experience-card p {
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+}
+
+.course {
+  margin-bottom: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  background: #ffffffcc;
+  border: 1px solid #c4b5fd;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+.course:hover {
+  background: #f5f3ff;
+  box-shadow: 0 0 10px #c4b5fd66;
+}
+
+.course-title {
+  font-weight: 600;
+  font-family: 'Share Tech Mono', monospace;
+  color: #7c3aed;
+  font-size: 25px;
+}
+
+
+.project-section {
+  margin-top: 20px;
+}
+
+.course-desc {
+  color: #181818;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.project-card {
+  background: #ffffff;
+  border-left: 3px solid #7c3aed;
+  padding: 15px 18px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  transition: transform 0.2s ease;
+}
+
+.project-card:hover {
+  transform: translateX(5px);
+}
+
+.skills-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+  list-style: none;
+  padding: 0;
+}
+
+.skills-list li {
+  background: #7c3aed;
+  border: 1px solid #333;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 14px;
+  color: #ffffff;
+  transition: background 0.2s;
+}
+
+.skills-list li:hover {
+  background: #2b2b2b;
+}
+  </style>
+
+<script>
+    function toggleCourse(course) {
+    const desc = course.querySelector(".course-desc");
+
+    if (desc.style.display === "block") {
+        desc.style.display = "none";
+    } else {
+        desc.style.display = "block";
+    }
+    }
+</script>
 </head>
 <body>
-    <header>
-        <nav class="navbar">
-            <ul>
-                <svg id="menu-icon" fill="#ffffff" width="40px" height="40px" viewBox="-148.48 -148.48 808.96 808.96" xmlns="http://www.w3.org/2000/svg" stroke="#ffffff" transform="matrix(1, 0, 0, 1, 0, 0)">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0" transform="translate(0,0), scale(1)">
-                        <rect x="-148.48" y="-148.48" width="808.96" height="808.96" rx="404.48" fill="#000000" strokewidth="0"></rect>
-                    </g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round" stroke="#CCCCCC" stroke-width="1.024"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path d="M290.59 192c-20.18 0-106.82 1.98-162.59 85.95V192c0-52.94-43.06-96-96-96-17.67 0-32 14.33-32 32s14.33 32 32 32c17.64 0 32 14.36 32 32v256c0 35.3 28.7 64 64 64h176c8.84 0 16-7.16 16-16v-16c0-17.67-14.33-32-32-32h-32l128-96v144c0 8.84 7.16 16 16 16h32c8.84 0 16-7.16 16-16V289.86c-10.29 2.67-20.89 4.54-32 4.54-61.81 0-113.52-44.05-125.41-102.4zM448 96h-64l-64-64v134.4c0 53.02 42.98 96 96 96s96-42.98 96-96V32l-64 64zm-72 80c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16zm80 0c-8.84 0-16-7.16-16-16s7.16-16 16-16 16 7.16 16 16-7.16 16-16 16z"></path>
-                    </g>
-                </svg>
-                
-                <li><a href="./image/WebsiteResume.pdf" download>Download Resume <i class="fas fa-download"></i></a></li>
-                <li><a href="https://www.linkedin.com/in/afeeney9" target="_blank">LinkedIn <i class="fa-brands fa-linkedin"></i></a></li>
-                <li><a href="#portfolio">Portfolio</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#home">Home</a></li>
-                
 
-            </ul>
-        </nav>
-    </header>
-    <div id="menu-bar">
-        <div id="menu" class="fas fa-bars"></div>
+  <nav>
+    <!-- <div class="logo" aria-label="Alexis Feeney logo">
+      <img src="https://i.imgur.com/VQo6T3G.png" alt="Cat Logo" />
+    </div> -->
+    <ul>
+      <li><a href="#home" tabindex="1">Home</a></li>
+      <li><a href="#experience" tabindex="2">Experience</a></li>
+      <li><a href="#projects" tabindex="3">Projects</a></li>
+      <li><a href="https://www.linkedin.com/in/afeeney9" target="_blank" rel="noopener noreferrer" tabindex="4">LinkedIn</a></li>
+      <li><a href="./image/WebsiteResume.pdf" download>Download Resume <i class="fas fa-download"></i></a></li>
+    </ul>
+  </nav>
+
+  <main>
+    <section id="home" class="card intro">
+      <small>Hello World</small>
+      <h1>I'M Alexis Feeney</h1>
+      <p>
+        I am currently a senior pursuing a Bachelor of Science in Software Engineering with a minor in Cybersecurity.
+        My passion for learning has guided me to the digital world as I see it intertwined with everyday life.
+        Exploring how to create and protect applications online has led me to the software engineering field and I am
+        looking forward to collaborating and learning from others with a shared passion.
+      </p>
+      <button class="btn-experience" onclick="location.href='#experience'">
+        My Experience
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 12c2.21 0 4-1.79 4-4S14.21 4 12 4 8 5.79 8 8s1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      </button>
+    </section>
+
+    <section class="card">
+    <h2>Relevant Coursework</h2>
+
+    <div class="course-card">
+
+        <div class="course-title">Cloud Computing (SE 4220)</div>
+
+        <p class="course-desc">
+        This course explored the architecture and development of modern cloud computing systems,
+        including scalable infrastructure, relational and NoSQL databases, and serverless deployment.
+        Students built and deployed real cloud applications using AWS and Google Cloud Platform.
+        </p>
+
+        <div class="project-section">
+
+        <h3>Projects</h3>
+
+        <div class="project-card">
+        <strong>AWS Cloud Photo Gallery</strong>
+        <p>Flask application deployed on EC2 with Amazon RDS database for photo upload,
+        search, and downloads.</p>
+        </div>
+
+        <div class="project-card">
+        <strong>NoSQL Photo Gallery</strong>
+        <p>Cloud application using AWS DynamoDB with account creation and scalable
+        image storage.</p>
+        </div>
+
+        <div class="project-card">
+        <strong>Serverless Deployment</strong>
+        <p>Deployed application on Google App Engine with Cloud SQL backend.</p>
+        </div>
+
+        <div class="project-card">
+        <strong>Cloud Classified Ads Website</strong>
+        <p>Built a Craigslist-style classified ads platform deployed on the cloud
+        with authentication and structured database storage.</p>
+        </div>
+
+        </div>
+
+        <h3>Tools & Skills</h3>
+
+        <ul class="skills-list">
+        <li>AWS EC2</li>
+        <li>Amazon RDS</li>
+        <li>DynamoDB</li>
+        <li>Google App Engine</li>
+        <li>Cloud SQL</li>
+        <li>Flask</li>
+        <li>Python</li>
+        <li>MongoDB</li>
+        <li>SQL / NoSQL</li>
+        <li>Serverless Computing</li>
+        </ul>
+
     </div>
-    <section id="home" class="home">
-        <div class="container">
-            <h3 id="intro">Hello World</h3>
-            <h1 id="intro" data-shadow="I'M Alexis Feeney">I'M Alexis Feeney</h1>
-            <p>I am currently a Senior pursuing a Bachelor of Science in Software Engineering with a minor in Cybersecurity. My passion for learning has guided me to the digital world as I see it as intertwined with everyday life. Exploring how to create and protect applications online has led me to the Software engineering field and I am looking forward to collaborating and learning from others with a shared passion.</p>
-            <a href="#experience"><button class="btn">My Experience <i class="fas fa-user"></i></button></a>
-        </div>
-    </section>
-    <section id="experience" class="experience">
-        <h1 class="heading">experience</h1>
-        <div class="row">
-            <div class="counter">
-                <div class="box">
-                    <i class="fas fa-graduation-cap"></i>
-                    <nav class="left-side">
-                        <span>Software Engineering</span>
-                        <h3>Graduation 2026</h3>
-                    </nav>
-                    <nav class="right-side">
-                        <p>I am currently a Senior at Iowa State University pursuing a Bachelor of Science in Software Engineering with a minor in Cybersecurity.</p>
-                    </nav>
-                </div>
-                <div class="box">
-                    <i class="fas fa-graduation-cap"></i>
-                    <span>GFACT Certification</span>
-                    <h3>Valid 2023-2027</h3>
-                    <p>The GIAC Foundational Cybersecurity Technologies (GFACT) certification validates a practitioner's 
-                        knowledge of essential foundational cybersecurity concepts. GFACT-certified professionals are familiar
-                         with practical skills in computers, technology, and security fundamentals that are needed to kickstart a career in cybersecurity.</p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-briefcase"></i>
-                    <span>Cyber Testing Intern</span>
-                    <h3>RSM</h3>
-                    <p>Working with RSM's Team of Penetration Testers on client engagements, I shadowed and actively participated in 2 internal penetration tests, assisting in the identification and validation of 
-security vulnerabilities across enterprise networks. Supported 2 red team operations by conducting open-source intelligence (OSINT) gathering to assist in social 
-engineering assessments. Participated in a client engagement for Amazon, assisting in penetration testing of new Amazon Web Service (AWS) 
-features and services prior to public release.
-                        </p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-briefcase"></i>
-                    <span>Cybersecurity Intern</span>
-                    <h3>Verizon</h3>
-                    <p>I Collaborate with 5 Penetration Testers on Verizon's Product Security Team to automate web app reconnaissance. To do this I Develop a Bash 
-                        Script integrating 13 open-source tools, streamlining security testing processes and reducing manual efforts by 1-2 day. While working with 
-                        Verizon I also completed web application vulnerabilities training and learned to use Burp Suite to identify vulnerabilities.
-                        I was also given access to Verizon’s bug bounty training videos and Ivanti training session videos to learn more about how to conduct a penetration test.
-                        </p>
-                </div>
-                <div class="box">
-                    <i class="fa fa-briefcase"></i>
-                    <span>Undergrad Research Assistant</span>
-                    <h3>Iowa State University</h3>
-                    <p> I researched and evaluated the benefits and challenges of Software Defined Networks and Cybersecurity and its use on the power grid.
-                        I used Mininet and deployed Python libraries to create virtual Software Defined Networks for testing purposes. Each week I documented 
-                        and organized research findings and progress updates, ensuring easy access for future reference and enabling efficient collaboration 
-                        among team members. I presented research outcomes with my teammates at Iowa State University’s Undergraduate Research Symposium.
-                        </p>
-                </div>
 
-                
-                
-            </div>
+    <div class="course-card">
+
+        <div class="course-title">Network Protocols and Security (CPRE 430)</div>
+
+        <p class="course-desc">
+        This course examined the design and security of modern computer networking protocols.
+        Students analyzed the TCP/IP protocol stack, captured and decoded network traffic,
+        and explored vulnerabilities in common protocols. Labs emphasized hands-on packet
+        analysis, network monitoring, and implementing defenses against common network attacks.
+        </p>
+
+        <h3>Tools & Skills</h3>
+
+        <ul class="skills-list">
+        <li>Wireshark</li>
+        <li>tcpdump</li>
+        <li>Linux Networking Tools</li>
+        <li>TCP/IP Protocol Stack</li>
+        <li>ARP / DNS / HTTP Protocol Analysis</li>
+        <li>Packet Capture & Inspection</li>
+        <li>Network Traffic Analysis</li>
+        <li>Intrusion Detection Concepts</li>
+        </ul>
+
+    </div>
+
+    <div class="course-card">
+
+        <div class="course-title">Cyber Security Fundamentals (CPRE 230)</div>
+
+        <p class="course-desc">
+        This course introduced the infrastructure and core concepts behind modern
+        cyber security systems. Students configured secure computing environments,
+        explored network routing and address translation, and monitored network
+        activity within virtualized environments. Labs focused on system setup,
+        network configuration, and securing computer and network resources.
+        </p>
+
+        <div class="project-section">
+
+        <h3>Labs</h3>
+
+        <div class="project-card">
+        <strong>Virtualized Network Environment Setup</strong>
+        <p>Configured virtual machines and network infrastructure to simulate
+        real-world computing environments used for security experimentation.</p>
         </div>
-    </section>
-    <section class="portfolio" id="portfolio">
-        <h1 class="heading">my portfolio</h1>
-        <div class="box-container">
-            <a class="box" target="_blank" href="https://github.com/AFeeney10/ReactWebsite">
-                <img id="react" src="image/logo512.png" alt="Mininet Logo">
-            </a>
-            <div class="box-buffer">  
-            </div>
-            <a class="box" href="https://afeeney10.github.io/webPractice/">
-                <img src="image/webDevBasic.jpg" alt="Web Development">
-            </a>
-            <div class="box-buffer">  
-            </div>
-            <!-- <a class="box">
-                <img src="image/webDevBasic.jpg" alt="Web Development">
-            </a>
-            <div class="box-buffer">  
-            </div>
-            <a class="box">
-                <img src="image/webDevBasic.jpg" alt="Web Development">
-            </a> -->
+
+        <div class="project-card">
+        <strong>Secure System Configuration</strong>
+        <p>Installed and configured operating systems and networking components
+        while applying security best practices for system hardening.</p>
         </div>
+
+        <div class="project-card">
+        <strong>Network Routing & NAT Configuration</strong>
+        <p>Implemented routing and network address translation to manage
+        communication between internal and external network segments.</p>
+        </div>
+
+        <div class="project-card">
+        <strong>Network Monitoring & Analysis</strong>
+        <p>Monitored network traffic within a controlled lab environment to
+        understand communication patterns and identify potential security risks.</p>
+        </div>
+
+        </div>
+
+        <h3>Tools & Skills</h3>
+
+        <ul class="skills-list">
+        <li>Virtual Machines</li>
+        <li>Linux System Administration</li>
+        <li>Network Configuration</li>
+        <li>Network Address Translation (NAT)</li>
+        <li>Routing Fundamentals</li>
+        <li>System Hardening</li>
+        <li>Network Monitoring</li>
+        <li>Cyber Security Fundamentals</li>
+        <li>Infrastructure Security</li>
+        <li>Virtualized Lab Environments</li>
+        </ul>
+
+    </div>
+
+    <div class="course-card">
+
+        <div class="course-title">Cyber Security Concepts and Tools (CPRE 231)</div>
+
+        <p class="course-desc">
+        This course explored practical computer and network security techniques
+        and the tools used to both defend and attack systems. Students evaluated
+        vulnerabilities in software and networks, implemented security controls,
+        and performed controlled penetration testing exercises. Labs emphasized
+        authentication, access control, intrusion detection, and vulnerability
+        assessment.
+        </p>
+
+        <div class="project-section">
+
+        <h3>LabsS</h3>
+
+        <div class="project-card">
+        <strong>Vulnerability Assessment Lab</strong>
+        <p>Evaluated computer systems for security weaknesses and analyzed
+        potential exploits affecting networked environments.</p>
+        </div>
+
+        <div class="project-card">
+        <strong>Authentication & Access Control</strong>
+        <p>Configured authentication systems and access control mechanisms
+        to enforce secure user permissions and system protections.</p>
+        </div>
+
+        <div class="project-card">
+        <strong>Firewall Configuration</strong>
+        <p>Implemented firewall rules to regulate network traffic and protect
+        systems from unauthorized access.</p>
+        </div>
+
+        <div class="project-card">
+        <strong>Intrusion Detection & Penetration Testing</strong>
+        <p>Used security tools to detect malicious activity and simulate
+        controlled penetration tests against vulnerable systems.</p>
+        </div>
+
+        </div>
+
+        <h3>Tools & Skills</h3>
+
+        <ul class="skills-list">
+        <li>Penetration Testing Fundamentals</li>
+        <li>Vulnerability Scanning</li>
+        <li>Access Control Systems</li>
+        <li>Authentication Mechanisms</li>
+        <li>Firewall Configuration</li>
+        <li>Intrusion Detection Systems</li>
+        <li>Network Security Tools</li>
+        <li>Threat Analysis</li>
+        <li>Security Testing</li>
+        <li>Cyber Security Ethics</li>
+        </ul>
+
+    </div>
+
+    <div class="course-card">
+
+        <div class="course-title">Applied Cryptography for Cyber Security (CPRE 331)</div>
+
+        <p class="course-desc">
+        This course explored the cryptographic foundations used in modern cyber
+        security systems. Students studied encryption algorithms, cryptographic
+        hash functions, pseudorandom number generation, and secure key
+        distribution. Labs and projects focused on applying cryptographic
+        techniques to authentication systems and secure network protocols while
+        analyzing threats such as malicious code and covert communication.
+        </p>
+
+
+        <h3>Tools & Skills</h3>
+
+        <ul class="skills-list">
+        <li>Python for Cryptography</li>
+        <li>Classic Ciphers (Caesar, Vigenère)</li>
+        <li>Stream Ciphers & LFSRs</li>
+        <li>Block Cipher Design (Feistel, DES, AES)</li>
+        <li>Block Cipher Modes (ECB, CBC, CTR)</li>
+        <li>RSA Public-Key Cryptography</li>
+        <li>Elliptic-Curve Diffie‑Hellman (ECDHE)</li>
+        <li>Hash Function Security & SHA‑1 Weaknesses</li>
+        <li>CSPRNG & Randomness Analysis</li>
+        <li>AEAD Authenticated Encryption</li>
+        </ul>
+
+    </div>
+
     </section>
-    <footer>
-        <p>&copy; 2024 Alexis Feeney</p>
-    </footer>
+
+    <section id="experience" class="card">
+    <h2>Experience</h2>
+
+    <div class="experience-card">
+        <h3>RSM Cyber Test Intern — Des Moines, IA</h3>
+        <span class="dates">June 2025 – August 2025</span>
+        <p>
+        During my internship with RSM’s Penetration Testing team, I collaborated on multiple client engagements, actively 
+        participating in two internal penetration tests to identify and validate security vulnerabilities across enterprise 
+        networks. I supported red team operations by conducting open-source intelligence (OSINT) gathering, contributing to 
+        social engineering assessments. Additionally, I assisted in a client engagement for a Cloud Provider, performing penetration 
+        testing on  feat proprietary features and services prior to public release, helping ensure their security and robustness.
+        </p>
+    </div>
+<br>
+    <div class="experience-card">
+        <h3>Verizon Cybersecurity Intern — Basking Ridge, NJ</h3>
+        <span class="dates">June 2024 – August 2024</span>
+        <p>
+        At Verizon, I collaborated with the Product Security Team to automate web application reconnaissance, developing a Bash script 
+        that integrated 13 open-source tools and significantly reduced manual effort. I gained hands-on experience with web application 
+        vulnerability testing using Burp Suite, furthering my practical knowledge of penetration testing techniques and automation.
+        </p>
+    </div>
+<br>
+    <div class="experience-card">
+        <h3>Iowa State University Research Assistant — Ames, IA</h3>
+        <span class="dates">January 2023 – May 2023</span>
+        <p>
+        As a research assistant, I created virtual Software Defined Networks using Mininet and Python libraries to simulate network environments 
+        for testing purposes. I documented and presented research findings at the Undergraduate Research Symposium, contributing to the ongoing 
+        development of cybersecurity and networking research at Iowa State University.
+        </p>
+    </div>
+    </section>
+
+    <section id="projects" class="card">
+      <h2>Projects</h2>
+      <ul>
+        <strong>Honors Project: Insight Into Word Embedding</strong> 
+        <span class="dates">September – December 2025</span>
+          <ul><li>Conducted honors research on word embedding systems, analyzing their evolution from Word2Vec to transformer
+based models, and presented findings on implications for modern AI systems and security</li></ul>
+        </li>
+        <strong>Security Automation Toolkit (Python, Bash)</strong> 
+        <span class="dates">June – August 2024</span>
+          <ul><li>Developed Python and Bash automation integrating multiple open-source security tools to streamline web and API 
+reconnaissance and improve testing efficiency. </li></ul>
+        </li>
+        <strong>Web Development Projects</strong> 
+        <span class="dates">September – December 2023</span>
+          <ul><li>Developed website using HTML, JS, and CSS: <a href="https://afeeney10.github.io/webPractice/" target="_blank">https://afeeney10.github.io/webPractice/</a></li></ul>
+          <ul><li>Created a React based website: <a href="https://github.com/AFeeney10/ReactWebsite" target="_blank">https://github.com/AFeeney10/ReactWebsite</a></li></ul>
+        </li>
+      </ul>
+    </section>
+
+  </main>
+
 </body>
 </html>
